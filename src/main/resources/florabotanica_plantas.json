@@ -1,0 +1,64 @@
+[
+{
+  "_id": {
+    "$oid": "692c9599c800af41e9745e20"
+  },
+  "nombre_comun": "Aloe",
+  "altura": 60,
+  "nombre_cientifico": "Aloe barbadensis miller",
+  "id_planta": 1
+},
+{
+  "_id": {
+    "$oid": "692c9599c800af41e9745e21"
+  },
+  "nombre_comun": "Ficus",
+  "altura": 330,
+  "nombre_cientifico": "Ficus benjamina",
+  "id_planta": 2
+},
+{
+  "_id": {
+    "$oid": "692c9599c800af41e9745e22"
+  },
+  "nombre_comun": "Romero",
+  "altura": 120,
+  "nombre_cientifico": "Rosmarinus officinalis",
+  "id_planta": 3
+},
+{
+  "_id": {
+    "$oid": "692c9599c800af41e9745e23"
+  },
+  "nombre_comun": "Lavanda",
+  "altura": 50,
+  "nombre_cientifico": "Lavandula angustifolia",
+  "id_planta": 4
+},
+{
+  "_id": {
+    "$oid": "692c9599c800af41e9745e24"
+  },
+  "nombre_comun": "Clavel",
+  "altura": 60,
+  "nombre_cientifico": "Dianthus caryophyllus",
+  "id_planta": 5
+},
+{
+  "_id": {
+    "$oid": "692c9599c800af41e9745e25"
+  },
+  "nombre_comun": "dfdfdfd",
+  "altura": 66,
+  "nombre_cientifico": "fdfd dfdfd",
+  "id_planta": 66
+},
+{
+  "_id": {
+    "$oid": "692c9599c800af41e9745e26"
+  },
+  "nombre_comun": "ghgh",
+  "altura": 60,
+  "nombre_cientifico": "hfhf60",
+  "id_planta": 44
+}]
