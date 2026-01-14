@@ -95,6 +95,8 @@ fun menu(){
         println("2) Exportar datos a json")
         println("3) Listar")
         println("4) Insertar")
+        println("5) Actualizar")
+        println("6) Eliminar")
 
 
 
@@ -108,6 +110,8 @@ fun menu(){
             "2" -> exportarDatos()
             "3" -> listar()
             "4" -> insertarPlanta()
+            "5" -> actualizarPlanta()
+            "6" -> eliminarPlanta()
 
             "0" -> {
                 println("Saliendo del programa ...")

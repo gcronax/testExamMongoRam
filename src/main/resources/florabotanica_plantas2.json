@@ -1,7 +1,7 @@
 [
 {
   "_id": {
-    "$oid": "6967993d935cdd47654cd4cf"
+    "$oid": "6967a5464f94b94f19faa405"
   },
   "nombre_comun": "Aloe",
   "altura": 60,
@@ -10,7 +10,7 @@
 },
 {
   "_id": {
-    "$oid": "6967993d935cdd47654cd4d0"
+    "$oid": "6967a5464f94b94f19faa406"
   },
   "nombre_comun": "Ficus",
   "altura": 330,
@@ -19,7 +19,7 @@
 },
 {
   "_id": {
-    "$oid": "6967993d935cdd47654cd4d1"
+    "$oid": "6967a5464f94b94f19faa407"
   },
   "nombre_comun": "Romero",
   "altura": 120,
@@ -28,7 +28,7 @@
 },
 {
   "_id": {
-    "$oid": "6967993d935cdd47654cd4d2"
+    "$oid": "6967a5464f94b94f19faa408"
   },
   "nombre_comun": "Lavanda",
   "altura": 50,
@@ -37,7 +37,7 @@
 },
 {
   "_id": {
-    "$oid": "6967993d935cdd47654cd4d3"
+    "$oid": "6967a5464f94b94f19faa409"
   },
   "nombre_comun": "Clavel",
   "altura": 60,
@@ -46,28 +46,10 @@
 },
 {
   "_id": {
-    "$oid": "6967993d935cdd47654cd4d4"
+    "$oid": "6967a5464f94b94f19faa40a"
   },
   "nombre_comun": "dfdfdfd",
   "altura": 66,
   "nombre_cientifico": "fdfd dfdfd",
   "id_planta": 66
-},
-{
-  "_id": {
-    "$oid": "6967993d935cdd47654cd4d5"
-  },
-  "nombre_comun": "ghgh",
-  "altura": 60,
-  "nombre_cientifico": "hfhf60",
-  "id_planta": 44
-},
-{
-  "_id": {
-    "$oid": "6967995a935cdd47654cd4d6"
-  },
-  "id_planta": 6,
-  "nombre_comun": "nombre",
-  "altura": 666,
-  "nombre_cientifico": "cien"
 }]
