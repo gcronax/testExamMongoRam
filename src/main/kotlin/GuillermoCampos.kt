@@ -15,6 +15,7 @@ import com.mongodb.client.MongoClients
 import com.mongodb.client.MongoClient
 import com.mongodb.client.MongoCollection
 import com.mongodb.client.MongoDatabase
+import com.mongodb.client.model.Filters
 
 
 // ****************
@@ -93,6 +94,8 @@ fun menu(){
         println("1) Importar datos desde json")
         println("2) Exportar datos a json")
         println("3) Listar")
+        println("4) Insertar")
+
 
 
         println("0) Salir")
@@ -104,6 +107,7 @@ fun menu(){
             "1" -> importarDatos()
             "2" -> exportarDatos()
             "3" -> listar()
+            "4" -> insertarPlanta()
 
             "0" -> {
                 println("Saliendo del programa ...")
@@ -127,10 +131,153 @@ fun exportarDatos(){
 fun listar() {
     println("\n**** Listado:")
     coleccionPlantas.find().forEach { doc ->
-        println(doc.toJson())
+        println(
+            "[${doc.getInteger("id_planta")}] " +
+                    "nombre_comun: ${doc.getString("nombre_comun")} " +
+                    "altura: ${doc.getInteger("altura")} " +
+                    "nombre_cientifico: ${doc.getString("nombre_cientifico")} "
+        )
     }
 }
 
+fun insertarPlanta() {
+    //conectar con la BD
+
+    val coleccionPlantas = coleccionPlantas
+
+    print("ID de la planta: ")
+    val id_planta = checkID(coleccionPlantas,"id_planta")
+    print("nombre_comun: ")
+    val nombre_comun = isString()
+    print("altura: ")
+    val altura = isInt()
+    print("nombre_cientifico: ")
+    val nombre_cientifico = isString()
+
+
+    val doc = Document("id_planta", id_planta)
+        .append("nombre_comun", nombre_comun)
+        .append("altura", altura)
+        .append("nombre_cientifico", nombre_cientifico)
+
+
+    coleccionPlantas.insertOne(doc)
+    println("Planta insertado con ID: ${doc.getObjectId("_id")}")
+}
+fun actualizarPlanta() {
+    val coleccionPlantas = coleccionPlantas
+
+    print("ID de la planta a modificar: ")
+    val id_planta = isInt()
+
+    val planta = coleccionPlantas
+        .find(Filters.eq("id_planta", id_planta))
+        .firstOrNull()
+
+    if (planta == null) {
+        println("No se encontró ninguna planta con id_planta = \"$id_planta\".")
+    } else {
+        println(
+            "Planta encontrada (" +
+                    "nombre_comun: ${planta.getString("nombre_comun")} " +
+                    "altura: ${planta.getInteger("altura")} " +
+                    "nombre_cientifico: ${planta.getString("nombre_cientifico")})"
+        )
+
+        print("Nuevo nombre común: ")
+        val nombre_comun = isString()
+        print("Nueva altura: ")
+        val altura = isInt()
+        print("Nuevo nombre científico: ")
+        val nombre_cientifico = isString()
+
+        val result = coleccionPlantas.updateOne(
+            Filters.eq("id_planta", id_planta),
+            Document(
+                "\$set", Document()
+                    .append("nombre_comun", nombre_comun)
+                    .append("altura", altura)
+                    .append("nombre_cientifico", nombre_cientifico)
+            )
+        )
+
+        if (result.modifiedCount > 0)
+            println("Planta actualizada correctamente.")
+        else
+            println("No se modificó ningún documento.")
+    }
+}
+
+fun eliminarPlanta() {
+    val coleccionPlantas = coleccionPlantas
+
+    print("ID de la planta a eliminar: ")
+    val id_planta = isInt()
+
+    val result = coleccionPlantas.deleteOne(Filters.eq("id_planta", id_planta))
+
+    if (result.deletedCount > 0)
+        println("Planta eliminada correctamente.")
+    else
+        println("No se encontró ninguna planta con ese ID.")
+}
+
+
+
+
+fun isInt():Int{
+    while (true){
+        val entrada= readln().toIntOrNull()
+        if (entrada==null){
+            println("Dame un número valido")
+        }else{
+            return entrada
+        }
+    }
+}
+fun isDouble(): Double{
+    while (true){
+        val entrada= readln().toDoubleOrNull()
+        if (entrada==null){
+            println("Dame un número valido(Double)")
+        }else{
+            return entrada
+        }
+    }
+}
+fun isString(): String{
+    while (true){
+        val entrada= readln()
+        if (entrada.isBlank()){
+            println("Dame un string valido")
+        }else{
+            return entrada
+        }
+    }
+}
+
+
+fun checkID(coleccion: MongoCollection<Document>, campo: String):Int{
+
+    while (true){
+        val entrada= readln().toIntOrNull()
+        if (entrada==null){
+            println("Dame un número valido")
+        }else{
+            var encontrado=false
+            coleccion.find().forEach { doc ->
+                if (doc.getInteger(campo)==entrada){
+                    encontrado=true
+                }
+            }
+            if (!encontrado){
+                return entrada
+            }else{
+                println("Dame un ID valido, ID $entrada ya existe")
+            }
+        }
+    }
+}
 
 // *****************************
 // **** importar  / exportar****
